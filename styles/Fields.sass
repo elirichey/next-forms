@@ -18,6 +18,14 @@ input, textarea, select
 
 .input-field
   position: relative
+  &.relative-index
+    z-index: 2
+.select-external-listener
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
 
 // Input
 .text-input-field
@@ -74,9 +82,83 @@ input, textarea, select
   top: 0
   right: 0
 
+// Select  
+.select-input-container
+  position: relative
+.select-input
+  display: flex
+  align-items: center
+  position: relative
+  height: 38px
+  width: 230px
+  background-color: transparent
+  color: #001
+  font-size: 14px
+  font-size: 14px
+  padding-right: 50px
+  line-height: 1.5
+  border: none
+  border-bottom: solid 1px #000
+  .indicator
+    display: flex
+    justify-content: center
+    align-items: center
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 10px
+    font-size: 16px
+    transform: rotate(0deg)
+    &.open
+      transform: rotate(270deg)
+
+.list-options
+  display: flex
+  flex-direction: column
+  position: absolute
+  width: 230px
+  top: 38px
+  left: 0
+  right: 0
+  background-color: purple
+  max-height: 230px
+  overflow: scroll
+  box-shadow: 4px 4px 8px 2px rgb(0 0 0 /10%)
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+
+.option
+  display: flex
+  height: 38px
+  width: 230px
+  background-color: transparent
+  color: #FFF
+  font-size: 14px
+  height: 38px
+  padding: 0px
+  font-size: 14px
+  line-height: 1.5
+  &.hide
+    display: none
+  button
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 38px
+    width: 100%
+    background-color: #FFF
+    border: none
+    border-bottom: solid 1px #000
+    &:hover
+      background-color: #00FF00
+
 // Checkbox
 .checkbox-field
   display: flex
+  padding-top: 5px
+  padding-bottom: 5px
   label
     width: fit-content
     padding-top: 3px
@@ -87,6 +169,8 @@ input, textarea, select
 // Radio
 .radio-field
   display: flex
+  padding-top: 5px
+  padding-bottom: 5px
   label
     width: fit-content
     padding-top: 3px
