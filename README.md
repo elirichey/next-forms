@@ -1,6 +1,14 @@
 # Overview
 
-- Get Started: `yarn && yarn dev`
+## Get Started
+
+- **Run:** `yarn && yarn dev`
+
+## Dependencies
+
+- [final-form](https://www.npmjs.com/package/final-form)
+- [react-final-form](https://www.npmjs.com/package/react-final-form)
+- [validator](https://www.npmjs.com/package/validator)
 
 #### Input
 
