@@ -16,7 +16,7 @@ export default function Checkbox(props) {
                 <label
                   className={meta.error ? "field-label-error" : "field-label"}
                 >
-                  Value One
+                  Do you agree?
                 </label>
 
                 <input {...input} type="checkbox" className="checkbox" />
