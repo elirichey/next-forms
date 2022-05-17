@@ -37,8 +37,8 @@ export default function Password(props) {
     isMedium ? setStrength("Medium") : null;
     isWeak ? setStrength("Weak") : null;
 
-    // if (val.length < 6)
-    return undefined;
+    if (val.length >= 6) return undefined;
+    else return "Password is too short";
   };
   // (isEmail(val) ? undefined : "Invalid Email");
 

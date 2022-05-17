@@ -1,3 +1,7 @@
+// General Settings
+input, textarea, select
+  font-family: Arial
+
 // Label
 .field-label
   display: block
@@ -55,6 +59,7 @@
   color: #001
   padding-right: 50px
   padding: 8px 12px
+  margin-top: 10px
   font-size: 14px
   line-height: 21px
   &:focus
@@ -68,3 +73,27 @@
   position: absolute
   top: 0
   right: 0
+
+// Checkbox
+.checkbox-field
+  display: flex
+  label
+    width: fit-content
+    padding-top: 3px
+  .checkbox
+    display: flex
+    margin-right: 5px
+
+// Radio
+.radio-field
+  display: flex
+  label
+    width: fit-content
+    padding-top: 3px
+  .radio
+    display: flex
+    margin-right: 5px
+
+.submit-container
+  display: flex
+  margin-top: 20px
