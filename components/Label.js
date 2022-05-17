@@ -1,6 +1,6 @@
 export default function Label(props) {
   const { label, name, hasError } = props;
-  const labelStyle = hasError ? "field_label_error" : "field_label";
+  const labelStyle = hasError ? "field-label-error" : "field-label";
 
   return (
     <label htmlFor={name} className={labelStyle}>

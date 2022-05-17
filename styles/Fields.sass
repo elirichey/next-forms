@@ -1,24 +1,25 @@
 // Label
-.field_label
+.field-label
   display: block
   font-size: 12px
   line-height: 12px
   color: #333
   font-weight: bold
-  text-transform: uppercase
-.field_label_error
+.field-label-error
   display: block
   font-size: 12px
   line-height: 12px
   color: #d30707
   font-weight: bold
-  text-transform: uppercase
+
+.input-field
+  position: relative
 
 // Input
-.text_input_field
+.text-input-field
   width: 100%
   margin-top: 10px
-.text_input
+.text-input
   display: block
   width: 100%
   border-top: 1px none #000
@@ -27,7 +28,6 @@
   border-left: 1px none #000
   background-color: transparent
   color: #001
-  font-family: Mont
   font-size: 14px
   height: 38px
   padding-bottom: 0px
@@ -42,9 +42,6 @@
       outline: none
 
 // Textarea
-.text_input_field
-  width: 100%
-  margin-top: 10px
 .textarea
   display: block
   width: 100%
@@ -65,3 +62,9 @@
     outline: none
     &:focus-visible
       outline: none
+
+// Passwords
+.password-strength
+  position: absolute
+  top: 0
+  right: 0
