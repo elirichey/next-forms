@@ -1,8 +1,8 @@
 import { Form, Field } from "react-final-form";
+import { required } from "../../utils/validation";
 import Label from "../Label";
 
 export default function Textarea(props) {
-  const required = (value) => (value ? undefined : "Required");
   const onSubmit = async (values) => {
     console.log("Submit Textarea", values.text);
   };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { required, composeValidators } from "../../utils/validation";
 import { Form, Field } from "react-final-form";
 import Label from "../Label";
 
@@ -6,14 +7,6 @@ export default function Password(props) {
   const [strength, setStrength] = useState(null);
   const [hidePassword, setHidePassword] = useState(true);
 
-  const required = (value) => (value ? undefined : "Required");
-  const composeValidators = (...validators) => {
-    return (value) =>
-      validators.reduce(
-        (error, validator) => error || validator(value),
-        undefined
-      );
-  };
   const mustBePassword = (val) => {
     // 1 lower case, 1 upper case, 1 number, one special character
     // at least 8 characters long
