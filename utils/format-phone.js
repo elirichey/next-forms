@@ -33,7 +33,7 @@ export const formatToPhone = (e) => {
   const middle = input.substring(3, 6);
   const last = input.substring(6, 10);
 
-  if (input.length > 6) e.target.value = `(${areaCode}) ${middle} - ${last}`;
+  if (input.length > 6) e.target.value = `(${areaCode}) ${middle}-${last}`;
   else if (input.length > 3) e.target.value = `(${areaCode}) ${middle}`;
   else if (input.length > 0) e.target.value = `(${areaCode}`;
 };
