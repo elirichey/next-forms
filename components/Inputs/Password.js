@@ -4,6 +4,7 @@ import Label from "../Label";
 
 export default function Password(props) {
   const [strength, setStrength] = useState(null);
+  const [hidePassword, setHidePassword] = useState(true);
 
   const required = (value) => (value ? undefined : "Required");
   const composeValidators = (...validators) => {
@@ -66,11 +67,28 @@ export default function Password(props) {
                 />
                 <input
                   {...input}
-                  type="password"
+                  type={hidePassword ? "password" : "text"}
                   placeholder="Password"
                   className="text-input"
                   required={true}
                 />
+
+                {hidePassword ? (
+                  <button
+                    className="password-visable"
+                    onClick={() => setHidePassword(false)}
+                  >
+                    Show
+                  </button>
+                ) : (
+                  <button
+                    className="password-visable"
+                    onClick={() => setHidePassword(true)}
+                  >
+                    Hide
+                  </button>
+                )}
+
                 {input.value.length > 6 ? (
                   <span className="password-strength">{strength}</span>
                 ) : null}

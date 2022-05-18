@@ -41,7 +41,14 @@ export default function SelectCustom(props) {
                 {options.map((item, i) => {
                   return (
                     <li className="option" key={i}>
-                      <button onClick={() => setSelected(item)}>{item}</button>
+                      <button
+                        onClick={() => {
+                          setSelected(item);
+                          setShowOptions(false);
+                        }}
+                      >
+                        {item}
+                      </button>
                     </li>
                   );
                 })}

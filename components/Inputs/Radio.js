@@ -14,7 +14,11 @@ export default function Radio(props) {
               return (
                 <div className="radio-field">
                   <label
-                    className={meta.error ? "field-label-error" : "field-label"}
+                    className={
+                      meta.error && meta.touched
+                        ? "field-label-error"
+                        : "field-label"
+                    }
                   >
                     Value 1
                   </label>
@@ -36,7 +40,11 @@ export default function Radio(props) {
               return (
                 <div className="radio-field">
                   <label
-                    className={meta.error ? "field-label-error" : "field-label"}
+                    className={
+                      meta.error && meta.touched
+                        ? "field-label-error"
+                        : "field-label"
+                    }
                   >
                     Value 2
                   </label>
@@ -54,11 +62,7 @@ export default function Radio(props) {
           </Field>
 
           <div className="submit-container">
-            <button
-              className="submit-btn"
-              type="submit"
-              disabled={submitting || pristine}
-            >
+            <button className="submit-btn" type="submit">
               Submit
             </button>
           </div>
