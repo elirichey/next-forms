@@ -1,4 +1,5 @@
 import { Form, Field } from "react-final-form";
+import { required } from "../../utils/validation";
 import Label from "../Label";
 
 export default function Select(props) {
@@ -12,17 +13,26 @@ export default function Select(props) {
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
           <div className="input-field">
-            <Label name="selection" label="Status" />
             <Field
               name="selection"
-              component="select"
-              className="text-input"
-              initialValue="Option 2"
+              validate={required}
+              initialValue={"Option 2"}
             >
-              <option />
-              <option value="Option 1">Option 1</option>
-              <option value="Option 2">Option 2</option>
-              <option value="Option 3">Option 3</option>
+              {({ input, meta }) => (
+                <div className="text_input_field">
+                  <Label
+                    name="selection"
+                    label="Selection"
+                    hasError={meta.error && meta.touched}
+                  />
+                  <select {...input} required={true} className="text-input">
+                    <option />
+                    <option value="Option 1">Option 1</option>
+                    <option value="Option 2">Option 2</option>
+                    <option value="Option 3">Option 3</option>
+                  </select>
+                </div>
+              )}
             </Field>
           </div>
 
