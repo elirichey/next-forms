@@ -88,6 +88,7 @@ export default function Phone(props) {
                   className="text-input"
                   onKeyUp={formatToPhone}
                   onKeyDown={enforceFormat}
+                  pattern={"^((+1)?[s-]?)?(?[1-9]dd)?[s-]?[1-9]dd[s-]?dddd"}
                   required={true}
                 />
               </div>
