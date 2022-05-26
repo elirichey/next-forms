@@ -130,6 +130,12 @@ input, textarea, select
     list-style: none
     padding: 0
     margin: 0
+  &.combobox-list
+    top: 50px
+    width: 100%
+    z-index: 10000
+    .option
+      width: 100%
 .option
   display: flex
   height: 38px
@@ -141,19 +147,21 @@ input, textarea, select
   padding: 0px
   font-size: 14px
   line-height: 1.5
-  &.hide
-    display: none
   button
     display: flex
     align-items: center
-    justify-content: center
     height: 38px
     width: 100%
     background-color: #FFF
     border: none
     border-bottom: solid 1px #000
     &:hover
-      background-color: #00FF00
+      background-color: #D0FAFF
+  &.active
+    button
+      background-color: #DDFFDD
+  &.hide
+    display: none
 .select-external-listener
   position: fixed
   top: 0
