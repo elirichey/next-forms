@@ -9,6 +9,7 @@ import SelectCustom from "../components/Inputs/SelectCustom";
 import Checkbox from "../components/Inputs/Checkbox";
 import CheckboxMultiSelect from "../components/Inputs/CheckboxMultiSelect";
 import Radio from "../components/Inputs/Radio";
+import Combobox from "../components/Inputs/Combobox";
 
 export default function Home() {
   return (
@@ -51,6 +52,11 @@ export default function Home() {
         <div className="form-wrapper">
           <span className="form-title">Select: Custom</span>
           <SelectCustom />
+        </div>
+
+        <div className="form-wrapper">
+          <span className="form-title">Search - Combobox</span>
+          <Combobox />
         </div>
 
         <div className="form-wrapper">
