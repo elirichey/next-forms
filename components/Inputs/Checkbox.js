@@ -17,9 +17,9 @@ export default function Checkbox(props) {
                   className={meta.error ? "field-label-error" : "field-label"}
                 >
                   Do you agree?
+                  <input {...input} type="checkbox" className="checkbox" />
                 </label>
 
-                <input {...input} type="checkbox" className="checkbox" />
                 {meta.error && (meta.modified || meta.touched) && (
                   <span>{meta.error}</span>
                 )}

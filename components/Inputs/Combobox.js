@@ -16,18 +16,21 @@ const testData = [
 export default function Combobox(props) {
   const [options, setOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
-  const [selections, setSelections] = useState([]);
 
   const getResults = async () => {
     await new Promise((resolve) => resolve(setOptions(testData)));
   };
 
+  // Search doesn't filter or anything for now
   const onSearch = async (values) => {
+    console.log("Search: ", values.text);
     await getResults();
     setShowOptions(true);
   };
 
-  const onSubmit = async () => console.log("Selected Values", selections);
+  const onSubmit = async (values) => {
+    console.log("Selected Values", values.comboboxSelected);
+  };
 
   // Sort Alphabetically
   options.sort((a, b) => a.localeCompare(b));
@@ -35,7 +38,7 @@ export default function Combobox(props) {
   return (
     <>
       <Form
-        onSubmit={onSearch}
+        onSubmit={onSubmit}
         initialValues={{ text: "" }}
         render={({ handleSubmit, form, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit}>
@@ -67,31 +70,33 @@ export default function Combobox(props) {
                                 return (
                                   <li
                                     className={
-                                      selections.includes(item)
+                                      values.comboboxSelected &&
+                                      values.comboboxSelected.includes(item)
                                         ? "option active"
                                         : "option"
                                     }
                                     key={i}
                                   >
-                                    <button
-                                      onClick={() => {
-                                        if (!selections.includes(item)) {
-                                          // Item
-                                          setSelections([...selections, item]);
-                                        } else {
-                                          // Remove item
-                                          let filteredSelections = [];
-                                          [...selections].map((x) => {
-                                            if (x !== item) {
-                                              filteredSelections.push(x);
-                                            }
-                                          });
-                                          setSelections(filteredSelections);
-                                        }
-                                      }}
+                                    <Field
+                                      name="comboboxSelected"
+                                      value={item}
+                                      type="checkbox"
+                                      multiple={true}
                                     >
-                                      {item}
-                                    </button>
+                                      {({ input, meta }) => (
+                                        <div className="checkbox-field combobox">
+                                          <label className="field-label">
+                                            {item}
+
+                                            <input
+                                              {...input}
+                                              type="checkbox"
+                                              className="checkbox"
+                                            />
+                                          </label>
+                                        </div>
+                                      )}
+                                    </Field>
                                   </li>
                                 );
                               })}
@@ -114,29 +119,31 @@ export default function Combobox(props) {
 
               <div className="combobox-btn">
                 <div className="submit-container">
-                  <button
+                  <span
                     className="submit-btn"
-                    type="submit"
-                    disabled={submitting || pristine}
+                    onClick={() => onSearch(values.text)}
                   >
                     Search
-                  </button>
+                  </span>
                 </div>
               </div>
+            </div>
+
+            <div className="combobox-submit">
+              <button
+                className="submit-btn"
+                onClick={() => onSubmit(values)}
+                disabled={
+                  values.comboboxSelected &&
+                  values.comboboxSelected.length === 0
+                }
+              >
+                Submit Selections
+              </button>
             </div>
           </form>
         )}
       />
-
-      <div className="combobox-submit">
-        <button
-          className="submit-btn"
-          onClick={onSubmit}
-          disabled={selections.length === 0}
-        >
-          Submit Selections
-        </button>
-      </div>
     </>
   );
 }

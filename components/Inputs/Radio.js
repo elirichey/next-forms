@@ -21,15 +21,15 @@ export default function Radio(props) {
                     }
                   >
                     Value 1
+                    <input
+                      name={input.name}
+                      type="radio"
+                      value="Value 1"
+                      checked={input.checked}
+                      onChange={input.onChange}
+                      className="radio"
+                    />
                   </label>
-                  <input
-                    name={input.name}
-                    type="radio"
-                    value="Value 1"
-                    checked={input.checked}
-                    onChange={input.onChange}
-                    className="radio"
-                  />
                 </div>
               );
             }}
@@ -47,15 +47,15 @@ export default function Radio(props) {
                     }
                   >
                     Value 2
+                    <input
+                      name={input.name}
+                      type="radio"
+                      value="Value 2"
+                      checked={input.checked}
+                      onChange={input.onChange}
+                      className="radio"
+                    />
                   </label>
-                  <input
-                    name={input.name}
-                    type="radio"
-                    value="Value 2"
-                    checked={input.checked}
-                    onChange={input.onChange}
-                    className="radio"
-                  />
                 </div>
               );
             }}

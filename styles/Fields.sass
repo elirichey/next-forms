@@ -4,13 +4,18 @@ input, textarea, select
 
 // Label
 .field-label
-  display: block
+  display: flex
+  align-items: center
   font-size: 12px
   line-height: 12px
   color: #333
   font-weight: bold
+  input
+    margin-left: 5px
+    margin-bottom: 3px
 .field-label-error
-  display: block
+  display: flex
+  align-items: center
   font-size: 12px
   line-height: 12px
   color: #d30707
@@ -160,6 +165,11 @@ input, textarea, select
   &.active
     button
       background-color: #DDFFDD
+    .combobox
+      background-color: #DDFFDD
+      &:hover
+        background-color: #D0FAFF
+
   &.hide
     display: none
 .select-external-listener
@@ -180,18 +190,28 @@ input, textarea, select
   .checkbox
     display: flex
     margin-right: 5px
+  &.combobox
+    flex: 1
+    padding: 0
+    background-color: #FFF
+    border-bottom: solid 1px #000
+    &:hover
+      background-color: #D0FAFF
+    .field-label
+      flex: 1
+      display: flex
+      align-items: center
+      padding: 0 5px 0
+      input
+        display: none
 
 // Radio
 .radio-field
   display: flex
   padding-top: 5px
   padding-bottom: 5px
-  label
-    width: fit-content
-    padding-top: 3px
   .radio
     display: flex
-    margin-right: 5px
 
 .submit-container
   display: flex
@@ -202,7 +222,6 @@ input, textarea, select
   display: flex
 .combobox-input
   flex: 1
-// .combobox-btn
 .combobox-submit
   display: flex
   margin-top: 20px

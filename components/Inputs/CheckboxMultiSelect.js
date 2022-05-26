@@ -27,9 +27,8 @@ export default function CheckboxMultiSelect(props) {
                   }
                 >
                   Value One
+                  <input {...input} type="checkbox" className="checkbox" />
                 </label>
-
-                <input {...input} type="checkbox" className="checkbox" />
               </div>
             )}
           </Field>
@@ -45,9 +44,8 @@ export default function CheckboxMultiSelect(props) {
                   }
                 >
                   Value Two
+                  <input {...input} type="checkbox" className="checkbox" />
                 </label>
-
-                <input {...input} type="checkbox" className="checkbox" />
               </div>
             )}
           </Field>
