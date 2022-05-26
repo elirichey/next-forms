@@ -53,11 +53,7 @@ export default function CheckboxMultiSelect(props) {
           </Field>
 
           <div className="submit-container">
-            <button
-              className="submit-btn"
-              type="submit"
-              // disabled={submitting || pristine}
-            >
+            <button className="submit-btn" type="submit" disabled={submitting}>
               Submit
             </button>
           </div>

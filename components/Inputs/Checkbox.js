@@ -28,11 +28,7 @@ export default function Checkbox(props) {
           </Field>
 
           <div className="submit-container">
-            <button
-              className="submit-btn"
-              type="submit"
-              disabled={submitting || pristine}
-            >
+            <button className="submit-btn" type="submit" disabled={submitting}>
               Submit
             </button>
           </div>

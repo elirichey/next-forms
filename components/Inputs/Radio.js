@@ -62,7 +62,7 @@ export default function Radio(props) {
           </Field>
 
           <div className="submit-container">
-            <button className="submit-btn" type="submit">
+            <button className="submit-btn" type="submit" disabled={submitting}>
               Submit
             </button>
           </div>

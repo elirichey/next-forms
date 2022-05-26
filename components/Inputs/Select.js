@@ -22,7 +22,7 @@ export default function Select(props) {
                 <div className="text_input_field">
                   <Label
                     name="selection"
-                    label="Selection"
+                    label="Selection *"
                     hasError={meta.error && meta.touched}
                   />
                   <select {...input} required={true} className="text-input">
@@ -37,11 +37,7 @@ export default function Select(props) {
           </div>
 
           <div className="submit-container">
-            <button
-              className="submit-btn"
-              type="submit"
-              disabled={submitting || pristine}
-            >
+            <button className="submit-btn" type="submit" disabled={submitting}>
               Submit
             </button>
           </div>

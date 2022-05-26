@@ -55,7 +55,7 @@ export default function Password(props) {
               <div className="input-field">
                 <Label
                   name="password"
-                  label="Password"
+                  label="Password *"
                   hasError={meta.error && meta.touched}
                 />
                 <input

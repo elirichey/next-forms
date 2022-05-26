@@ -23,7 +23,7 @@ export default function Email(props) {
               <div className="input-field">
                 <Label
                   name="email"
-                  label="Email"
+                  label="Email *"
                   hasError={meta.error && meta.touched}
                 />
                 <input

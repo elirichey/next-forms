@@ -2,41 +2,34 @@ import { Form, Field } from "react-final-form";
 import {
   required,
   composeValidators,
-  mustBePhone,
+  mustBeEmail,
 } from "../../utils/validation";
-import { enforceFormat, formatToPhone } from "../../utils/format-phone";
-
 import Label from "../Label";
 
-export default function Phone(props) {
-  const onSubmit = async (values) => console.log("Submit Phone", values.phone);
+export default function Combobox(props) {
+  const {} = props;
+
+  const onSubmit = async (values) => console.log("Submit Text", values.text);
 
   return (
     <Form
       onSubmit={onSubmit}
+      initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Field
-            name="phone"
-            initialValues={{ phone: "" }}
-            validate={composeValidators(required, mustBePhone)}
-          >
+          <Field name="text" validate={required}>
             {({ input, meta }) => (
               <div className="input-field">
                 <Label
-                  name="phone"
-                  label="Phone Number *"
+                  name="text"
+                  label="Combo Box"
                   hasError={meta.error && meta.touched}
                 />
                 <input
                   {...input}
-                  type="phoneNumber"
-                  placeholder="Phone Number"
-                  maxLength="16"
+                  type="text"
+                  placeholder="Placeholder"
                   className="text-input"
-                  onKeyUp={formatToPhone}
-                  onKeyDown={enforceFormat}
-                  pattern={"^((+1)?[s-]?)?(?[1-9]dd)?[s-]?[1-9]dd[s-]?dddd"}
                   required={true}
                 />
               </div>

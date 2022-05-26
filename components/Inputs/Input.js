@@ -16,7 +16,7 @@ export default function Input(props) {
               <div className="input-field">
                 <Label
                   name="text"
-                  label="Text Input"
+                  label="Text Input *"
                   hasError={meta.error && meta.touched}
                 />
                 <input
