@@ -17,15 +17,17 @@ export default function Combobox(props) {
   const [options, setOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
 
-  const getResults = async () => {
-    await new Promise((resolve) => resolve(setOptions(testData)));
-  };
-
-  // Search doesn't filter or anything for now
+  // 1. Search doesn't filter or anything for now
+  //    but if you needed to filter, call api, whatever
+  //    this is where you do it...
+  // 2. You'd probably want to add loading state too
   const onSearch = async (values) => {
     console.log("Search: ", values.text);
-    await getResults();
+    await callApiForOptions(); // Testing Only...
     setShowOptions(true);
+  };
+  const callApiForOptions = async () => {
+    await new Promise((resolve) => resolve(setOptions(testData)));
   };
 
   const onSubmit = async (values) => {
@@ -56,9 +58,8 @@ export default function Combobox(props) {
                           placeholder='Type and click search to "Fetch" values...'
                           className="text-input"
                           onFocus={(e) => {
-                            if (e.target.value !== "") {
-                              return setShowOptions(true);
-                            }
+                            const { value } = e.target;
+                            if (value !== "") return setShowOptions(true);
                           }}
                         />
 
@@ -87,7 +88,6 @@ export default function Combobox(props) {
                                         <div className="checkbox-field combobox">
                                           <label className="field-label">
                                             {item}
-
                                             <input
                                               {...input}
                                               type="checkbox"
