@@ -55,7 +55,7 @@ export default function Home() {
         </div>
 
         <div className="form-wrapper">
-          <span className="form-title">Search - Combobox</span>
+          <span className="form-title">Combobox</span>
           <Combobox />
         </div>
 

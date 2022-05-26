@@ -53,7 +53,7 @@ export default function Combobox(props) {
                         <input
                           {...input}
                           type="text"
-                          placeholder="Search..."
+                          placeholder='Type and click search to "Fetch" values...'
                           className="text-input"
                           onFocus={(e) => {
                             if (e.target.value !== "") {
