@@ -1,13 +1,21 @@
-import { useRef, useState, useEffect } from "react";
-// import { Form, Field } from "react-final-form";
+import { useState } from "react";
+import { Form, Field } from "react-final-form";
 import Label from "../Label";
-// import { required, composeValidators, mustBeEmail } from "../../utils/validation";
+import {
+  required,
+  composeValidators,
+  cannotBeValue,
+} from "../../utils/validation";
 
 export default function SelectCustom(props) {
   const [showOptions, setShowOptions] = useState(false);
   const [selected, setSelected] = useState("(Select)");
 
   const onSubmit = async (values) => {
+    // Only return a non-null value because this component renders twice...
+    //   1. State update for "selected"
+    //   2. Field Input update
+    if (!values.selection) return;
     console.log("Submit Selection", values.selection);
   };
 
@@ -23,55 +31,89 @@ export default function SelectCustom(props) {
   ];
 
   return (
-    <>
-      <div className="input-field relative-index">
-        <Label name="selection" label="Status" />
-        <div className="select-input-container">
-          <button
-            className="select-input"
-            onClick={() => setShowOptions(!showOptions)}
-          >
-            {selected}
-            <span className={showOptions ? "indicator open" : "indicator"}>
-              {`«`}
-            </span>
-          </button>
+    <Form
+      onSubmit={onSubmit}
+      render={({ handleSubmit, form, submitting, pristine, values }) => (
+        <form onSubmit={handleSubmit}>
+          <div className="input-field relative-index">
+            {/* Hidden Input */}
+            <Field
+              name="selection"
+              validate={composeValidators(required, cannotBeValue)}
+              initialValue={selected}
+            >
+              {({ input, meta }) => (
+                <div className="input-field">
+                  <Label
+                    name="selection"
+                    label="Custom Select *"
+                    hasError={meta.error && meta.touched}
+                  />
+                  <input
+                    {...input}
+                    type="hidden" // REQUIRED FOR CUSTOM SELECT
+                    required={true}
+                  />
+                </div>
+              )}
+            </Field>
 
-          {showOptions ? (
-            <div className="list-options">
-              <ul>
-                {options.map((item, i) => {
-                  return (
-                    <li className="option" key={i}>
-                      <button
-                        onClick={() => {
-                          setSelected(item);
-                          setShowOptions(false);
-                        }}
-                      >
-                        {item}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className="select-input-container">
+              {/* Main Selector */}
+              <button
+                className="select-input"
+                onClick={() => setShowOptions(!showOptions)}
+              >
+                {selected}
+                <span className={showOptions ? "indicator open" : "indicator"}>
+                  {`«`}
+                </span>
+              </button>
+
+              {/* List dropdown */}
+              {showOptions ? (
+                <div className="list-options">
+                  <ul>
+                    {options.map((item, i) => {
+                      return (
+                        <li className="option" key={i}>
+                          <button
+                            onClick={() => {
+                              setSelected(item);
+                              setShowOptions(false);
+                            }}
+                          >
+                            {item}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null}
             </div>
+          </div>
+
+          {/* List Dropdown - Background Listener */}
+          {showOptions ? (
+            <span
+              className="select-external-listener"
+              onClick={() => setShowOptions(false)}
+            />
           ) : null}
-        </div>
-      </div>
 
-      {showOptions ? (
-        <span
-          className="select-external-listener"
-          onClick={() => setShowOptions(false)}
-        />
-      ) : null}
-
-      <div className="submit-container relative-index">
-        <button className="submit-btn" onClick={onSubmit}>
-          Submit
-        </button>
-      </div>
-    </>
+          {/* Submit */}
+          <div className="submit-container relative-index">
+            <button
+              className="submit-btn"
+              onClick={onSubmit}
+              disabled={submitting || values.selection === "(Select)"}
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      )}
+    />
   );
 }

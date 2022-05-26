@@ -24,6 +24,13 @@ export const mustBePhone = async (val) => {
   else return undefined;
 };
 
+// Cannot be Value
+export const cannotBeValue = async (val) => {
+  const cannotBeValue = "(Select)";
+  if (val === cannotBeValue) return `Please choose a value`;
+  else return undefined;
+};
+
 // Password
 // - Validation lives in the password input file
 //   because it also updates state for checking
