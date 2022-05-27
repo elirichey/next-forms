@@ -4,7 +4,7 @@ import Label from "../Label";
 
 export default function Textarea(props) {
   const onSubmit = async (values) => {
-    console.log("Submit Textarea", values.text);
+    console.log("Submit Textarea:::", values.text);
   };
 
   return (
@@ -13,25 +13,14 @@ export default function Textarea(props) {
       initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Field name="text" validate={required}>
-            {({ input, meta }) => (
-              <div className="input-field">
-                <Label
-                  name="text"
-                  label="Textarea Input"
-                  hasError={meta.error && meta.touched}
-                />
-                <textarea
-                  {...input}
-                  type="text"
-                  placeholder="Placeholder"
-                  className="textarea"
-                  rows="4"
-                  required={true}
-                />
-              </div>
-            )}
-          </Field>
+          <RenderTextarea
+            name="text"
+            label="Textarea Input"
+            placeholder="Placeholder"
+            validate={required}
+            required={true}
+            rows="4"
+          />
 
           <div className="submit-container">
             <button
@@ -45,5 +34,30 @@ export default function Textarea(props) {
         </form>
       )}
     />
+  );
+}
+
+function RenderTextarea(props) {
+  const { name, label, placeholder, validate, required, rows } = props;
+  return (
+    <Field name={name} validate={validate}>
+      {({ input, meta }) => (
+        <div className="input-field">
+          <Label
+            name={name}
+            label={label}
+            hasError={meta.error && meta.touched}
+          />
+          <textarea
+            {...input}
+            type="text"
+            placeholder={placeholder}
+            className="textarea"
+            rows={rows}
+            required={required}
+          />
+        </div>
+      )}
+    </Field>
   );
 }

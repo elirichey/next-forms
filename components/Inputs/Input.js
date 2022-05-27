@@ -3,7 +3,7 @@ import { required } from "../../utils/validation";
 import Label from "../Label";
 
 export default function Input(props) {
-  const onSubmit = async (values) => console.log("Submit Text", values.text);
+  const onSubmit = async (values) => console.log("Submit Text:::", values.text);
 
   return (
     <Form
@@ -11,24 +11,13 @@ export default function Input(props) {
       initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Field name="text" validate={required}>
-            {({ input, meta }) => (
-              <div className="input-field">
-                <Label
-                  name="text"
-                  label="Text Input *"
-                  hasError={meta.error && meta.touched}
-                />
-                <input
-                  {...input}
-                  type="text"
-                  placeholder="Placeholder"
-                  className="text-input"
-                  required={true}
-                />
-              </div>
-            )}
-          </Field>
+          <RenderPhoneInput
+            name="text"
+            label="Text Input *"
+            placeholder="Placeholder"
+            validate={required}
+            required={true}
+          />
 
           <div className="submit-container">
             <button
@@ -42,5 +31,30 @@ export default function Input(props) {
         </form>
       )}
     />
+  );
+}
+
+function RenderPhoneInput(props) {
+  const { name, label, validate, required, placeholder } = props;
+
+  return (
+    <Field name={name} validate={validate}>
+      {({ input, meta }) => (
+        <div className="input-field">
+          <Label
+            name={name}
+            label={label}
+            hasError={meta.error && meta.touched}
+          />
+          <input
+            {...input}
+            type="text"
+            placeholder={placeholder}
+            className="text-input"
+            required={required}
+          />
+        </div>
+      )}
+    </Field>
   );
 }

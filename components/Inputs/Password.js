@@ -34,10 +34,9 @@ export default function Password(props) {
     if (val.length >= 6) return undefined;
     else return "Password is too short";
   };
-  // (isEmail(val) ? undefined : "Invalid Email");
 
   const onSubmit = async (values) => {
-    console.log("Submit Password", values.password);
+    console.log("Submit Password:::", values.password);
   };
 
   return (
@@ -46,48 +45,16 @@ export default function Password(props) {
       initialValues={{ password: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Field
+          <RenderPassword
             name="password"
-            // validate={required} // No Checking Strength
-            validate={composeValidators(required, mustBePassword)} // Tests Password Strength
-          >
-            {({ input, meta }) => (
-              <div className="input-field">
-                <Label
-                  name="password"
-                  label="Password *"
-                  hasError={meta.error && meta.touched}
-                />
-                <input
-                  {...input}
-                  type={hidePassword ? "password" : "text"}
-                  placeholder="Password"
-                  className="text-input"
-                  required={true}
-                />
-
-                {hidePassword ? (
-                  <button
-                    className="password-visable"
-                    onClick={() => setHidePassword(false)}
-                  >
-                    Show
-                  </button>
-                ) : (
-                  <button
-                    className="password-visable"
-                    onClick={() => setHidePassword(true)}
-                  >
-                    Hide
-                  </button>
-                )}
-
-                {input.value.length > 6 ? (
-                  <span className="password-strength">{strength}</span>
-                ) : null}
-              </div>
-            )}
-          </Field>
+            label="Password *"
+            placeholder="Password"
+            hidePassword={hidePassword}
+            setHidePassword={setHidePassword}
+            strength={strength}
+            validate={composeValidators(required, mustBePassword)}
+            required={true}
+          />
 
           <div className="submit-container">
             <button
@@ -101,5 +68,64 @@ export default function Password(props) {
         </form>
       )}
     />
+  );
+}
+
+function RenderPassword(props) {
+  const {
+    name,
+    label,
+    validate,
+    required,
+    placeholder,
+    hidePassword,
+    setHidePassword,
+    strength,
+  } = props;
+
+  return (
+    <Field
+      name={name}
+      // validate={required} // No Checking Strength
+      // validate={composeValidators(required, mustBePassword)} // Tests Password Strength
+      validate={validate}
+    >
+      {({ input, meta }) => (
+        <div className="input-field">
+          <Label
+            name={name}
+            label={label}
+            hasError={meta.error && meta.touched}
+          />
+          <input
+            {...input}
+            type={hidePassword ? "password" : "text"}
+            placeholder={placeholder}
+            className="text-input"
+            required={required}
+          />
+
+          {hidePassword ? (
+            <button
+              className="password-visable"
+              onClick={() => setHidePassword(false)}
+            >
+              Show
+            </button>
+          ) : (
+            <button
+              className="password-visable"
+              onClick={() => setHidePassword(true)}
+            >
+              Hide
+            </button>
+          )}
+
+          {input.value.length > 6 ? (
+            <span className="password-strength">{strength}</span>
+          ) : null}
+        </div>
+      )}
+    </Field>
   );
 }
