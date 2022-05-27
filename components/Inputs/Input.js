@@ -11,7 +11,7 @@ export default function Input(props) {
       initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderPhoneInput
+          <RenderInput
             name="text"
             label="Text Input *"
             placeholder="Placeholder"
@@ -34,7 +34,7 @@ export default function Input(props) {
   );
 }
 
-function RenderPhoneInput(props) {
+function RenderInput(props) {
   const { name, label, validate, required, placeholder } = props;
 
   return (

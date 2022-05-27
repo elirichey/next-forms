@@ -18,7 +18,7 @@ export default function Phone(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderPhone
+          <RenderPhoneInput
             name="phone"
             label="Phone Number *"
             placeholder="Phone Number"
@@ -41,7 +41,7 @@ export default function Phone(props) {
   );
 }
 
-function RenderPhone(props) {
+function RenderPhoneInput(props) {
   const { name, label, validate, required, placeholder } = props;
 
   return (
