@@ -7,7 +7,7 @@ import {
   cannotBeValue,
 } from "../../utils/validation";
 
-export default function SelectCustom(props) {
+export function SelectCustomForm(props) {
   const [showOptions, setShowOptions] = useState(false);
   const [selected, setSelected] = useState("(Select)");
 
@@ -35,7 +35,7 @@ export default function SelectCustom(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderCustomSelect
+          <SelectCustom
             name="selection"
             label="Custom Select *"
             options={options}
@@ -63,7 +63,7 @@ export default function SelectCustom(props) {
   );
 }
 
-function RenderCustomSelect(props) {
+export default function SelectCustom(props) {
   const {
     name,
     label,

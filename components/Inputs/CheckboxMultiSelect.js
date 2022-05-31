@@ -2,7 +2,7 @@ import { Form, Field } from "react-final-form";
 
 const options = ["Value 1", "Value 2", "Value 3"];
 
-export function CheckboxMultiSelect(props) {
+export function CheckboxMultiSelectForm(props) {
   const onSubmit = async (values) => {
     console.log("Submit Checkbox Muliselect:::", values.isChecked);
   };
@@ -13,7 +13,7 @@ export function CheckboxMultiSelect(props) {
       initialValues={{ isChecked: [] }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderMultiselect
+          <CheckboxMultiSelect
             name="isChecked"
             options={options}
             multiple={true}
@@ -31,7 +31,7 @@ export function CheckboxMultiSelect(props) {
   );
 }
 
-export default function RenderMultiselect(props) {
+export default function CheckboxMultiSelect(props) {
   const { name, options, multiple, initialValues } = props;
 
   return options.map((item, i) => {

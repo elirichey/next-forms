@@ -8,7 +8,7 @@ import { enforceFormat, formatToPhone } from "../../utils/format-phone";
 
 import Label from "../Label";
 
-export default function Phone(props) {
+export function PhoneForm(props) {
   const onSubmit = async (values) => {
     console.log("Submit Phone:::", values.phone);
   };
@@ -18,7 +18,7 @@ export default function Phone(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderPhoneInput
+          <Phone
             name="phone"
             label="Phone Number *"
             initialValue="(xxx) xxx-xxxx"
@@ -42,7 +42,7 @@ export default function Phone(props) {
   );
 }
 
-function RenderPhoneInput(props) {
+export default function Phone(props) {
   const { name, label, validate, required, placeholder, initialValue } = props;
 
   return (

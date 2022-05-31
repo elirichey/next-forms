@@ -4,7 +4,7 @@ import Label from "../Label";
 
 const options = ["Option 1", "Option 2", "Option 3"];
 
-export default function Select(props) {
+export function SelectForm(props) {
   const onSubmit = async (values) => {
     console.log("Submit Selection:::", values.selection);
   };
@@ -14,7 +14,7 @@ export default function Select(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderSelect
+          <Select
             name="selection"
             label="Selection *"
             options={options}
@@ -33,7 +33,7 @@ export default function Select(props) {
   );
 }
 
-function RenderSelect(props) {
+export default function Select(props) {
   const { name, label, options, validate, required, setShowOptions } = props;
 
   return (

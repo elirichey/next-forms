@@ -2,7 +2,7 @@ import { Form, Field } from "react-final-form";
 import { required } from "../../utils/validation";
 import Label from "../Label";
 
-export default function Textarea(props) {
+export function TextareaForm(props) {
   const onSubmit = async (values) => {
     console.log("Submit Textarea:::", values.text);
   };
@@ -13,9 +13,10 @@ export default function Textarea(props) {
       initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderTextarea
+          <Textarea
             name="text"
             label="Textarea Input"
+            initialValue="initialValue"
             placeholder="Placeholder"
             validate={required}
             required={true}
@@ -37,10 +38,11 @@ export default function Textarea(props) {
   );
 }
 
-function RenderTextarea(props) {
-  const { name, label, placeholder, validate, required, rows } = props;
+export default function Textarea(props) {
+  const { name, label, placeholder, validate, required, rows, initialValue } =
+    props;
   return (
-    <Field name={name} validate={validate}>
+    <Field name={name} initialValue={initialValue} validate={validate}>
       {({ input, meta }) => (
         <div className="input-field">
           <Label

@@ -2,7 +2,7 @@ import { Form, Field } from "react-final-form";
 import { required } from "../../utils/validation";
 import Label from "../Label";
 
-export default function Input(props) {
+export function InputForm(props) {
   const onSubmit = async (values) => console.log("Submit Text:::", values.text);
 
   return (
@@ -11,7 +11,7 @@ export default function Input(props) {
       initialValues={{ text: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderInput
+          <Input
             name="text"
             label="Text Input *"
             initialValue="initialValue"
@@ -35,7 +35,7 @@ export default function Input(props) {
   );
 }
 
-function RenderInput(props) {
+export default function Input(props) {
   const { name, label, validate, required, placeholder, initialValue } = props;
 
   return (

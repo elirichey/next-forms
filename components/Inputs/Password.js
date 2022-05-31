@@ -3,7 +3,7 @@ import { required, composeValidators } from "../../utils/validation";
 import { Form, Field } from "react-final-form";
 import Label from "../Label";
 
-export default function Password(props) {
+export function PasswordForm(props) {
   const [strength, setStrength] = useState(null);
   const [hidePassword, setHidePassword] = useState(true);
 
@@ -45,15 +45,16 @@ export default function Password(props) {
       initialValues={{ password: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderPassword
+          <Password
             name="password"
             label="Password *"
             initialValue="initialValue"
             placeholder="Password"
             hidePassword={hidePassword}
             setHidePassword={setHidePassword}
+            // validate={required} // No Checking Strength
+            validate={composeValidators(required, mustBePassword)} // Tests Password Strength
             strength={strength}
-            validate={composeValidators(required, mustBePassword)}
             required={true}
           />
 
@@ -72,7 +73,7 @@ export default function Password(props) {
   );
 }
 
-function RenderPassword(props) {
+export default function Password(props) {
   const {
     name,
     label,
@@ -86,13 +87,7 @@ function RenderPassword(props) {
   } = props;
 
   return (
-    <Field
-      name={name}
-      initialValue={initialValue}
-      // validate={required} // No Checking Strength
-      // validate={composeValidators(required, mustBePassword)} // Tests Password Strength
-      validate={validate}
-    >
+    <Field name={name} initialValue={initialValue} validate={validate}>
       {({ input, meta }) => (
         <div className="input-field">
           <Label

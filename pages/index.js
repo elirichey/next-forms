@@ -1,15 +1,15 @@
 import Head from "next/head";
-import Input from "../components/Inputs/Input";
-import Email from "../components/Inputs/Email";
-import Phone from "../components/Inputs/Phone";
-import Password from "../components/Inputs/Password";
-import Textarea from "../components/Inputs/Textarea";
-import Select from "../components/Inputs/Select";
-import SelectCustom from "../components/Inputs/SelectCustom";
-import Checkbox from "../components/Inputs/Checkbox";
-import { CheckboxMultiSelect } from "../components/Inputs/CheckboxMultiSelect";
-import Radio from "../components/Inputs/Radio";
-import Combobox from "../components/Inputs/Combobox";
+import { InputForm } from "../components/Inputs/Input";
+import { EmailForm } from "../components/Inputs/Email";
+import { PhoneForm } from "../components/Inputs/Phone";
+import { PasswordForm } from "../components/Inputs/Password";
+import { TextareaForm } from "../components/Inputs/Textarea";
+import { SelectForm } from "../components/Inputs/Select";
+import { SelectCustomForm } from "../components/Inputs/SelectCustom";
+import { CheckboxForm } from "../components/Inputs/Checkbox";
+import { CheckboxMultiSelectForm } from "../components/Inputs/CheckboxMultiSelect";
+import { RadiosForm } from "../components/Inputs/Radios";
+import { ComboboxForm } from "../components/Inputs/Combobox";
 
 export default function Home() {
   return (
@@ -21,57 +21,57 @@ export default function Home() {
       <main className="main">
         <div className="form-wrapper">
           <span className="form-title">Input</span>
-          <Input />
+          <InputForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Email</span>
-          <Email />
+          <EmailForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Phone</span>
-          <Phone />
+          <PhoneForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Password</span>
-          <Password />
+          <PasswordForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Textarea</span>
-          <Textarea />
+          <TextareaForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Select</span>
-          <Select />
+          <SelectForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Select: Custom</span>
-          <SelectCustom />
+          <SelectCustomForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Combobox</span>
-          <Combobox />
+          <ComboboxForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Checkbox</span>
-          <Checkbox />
+          <CheckboxForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Checkbox Multiselect</span>
-          <CheckboxMultiSelect />
+          <CheckboxMultiSelectForm />
         </div>
 
         <div className="form-wrapper">
           <span className="form-title">Radio</span>
-          <Radio />
+          <RadiosForm />
         </div>
       </main>
     </div>

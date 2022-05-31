@@ -6,7 +6,7 @@ import {
 } from "../../utils/validation";
 import Label from "../Label";
 
-export default function Email(props) {
+export function EmailForm(props) {
   const onSubmit = async (values) => console.log("Submit Email", values.email);
 
   return (
@@ -14,7 +14,7 @@ export default function Email(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderEmailField
+          <Email
             name="email"
             label="Email *"
             initialValue="initialValue@email.com"
@@ -38,7 +38,7 @@ export default function Email(props) {
   );
 }
 
-function RenderEmailField(props) {
+export default function Email(props) {
   const { name, label, validate, placeholder, required, initialValue } = props;
 
   return (

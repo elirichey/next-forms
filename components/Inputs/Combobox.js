@@ -13,7 +13,7 @@ const testData = [
   "Matt",
 ];
 
-export default function Combobox(props) {
+export function ComboboxForm(props) {
   const [showOptions, setShowOptions] = useState(false);
 
   const onSearch = async (values) => {
@@ -31,7 +31,7 @@ export default function Combobox(props) {
       initialValues={{ text: null }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderCombobox
+          <Combobox
             searchName="text"
             optionName="comboboxSelected"
             label="Combo Box"
@@ -59,7 +59,7 @@ export default function Combobox(props) {
   );
 }
 
-function RenderCombobox(props) {
+export default function Combobox(props) {
   const {
     optionName,
     searchName,

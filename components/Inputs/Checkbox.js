@@ -1,6 +1,6 @@
 import { Form, Field } from "react-final-form";
 
-export default function Checkbox(props) {
+export function CheckboxForm(props) {
   const onSubmit = async (values) => {
     console.log("Submit Checkbox:::", values.isChecked);
   };
@@ -10,7 +10,11 @@ export default function Checkbox(props) {
       onSubmit={onSubmit}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <RenderCheckbox name="isChecked" label="Do you agree?" />
+          <Checkbox
+            name="isChecked"
+            label="Do you agree?"
+            initialValue={false}
+          />
           <div className="submit-container">
             <button className="submit-btn" type="submit" disabled={submitting}>
               Submit
@@ -22,11 +26,11 @@ export default function Checkbox(props) {
   );
 }
 
-function RenderCheckbox(props) {
-  const { name, label } = props;
+export default function Checkbox(props) {
+  const { name, label, initialValue } = props;
 
   return (
-    <Field name={name} type="checkbox">
+    <Field name={name} type="checkbox" initialValue={initialValue}>
       {({ input, meta }) => (
         <div className="checkbox-field">
           <label className={meta.error ? "field-label-error" : "field-label"}>
