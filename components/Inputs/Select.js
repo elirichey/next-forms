@@ -17,6 +17,7 @@ export function SelectForm(props) {
           <Select
             name="selection"
             label="Selection *"
+            initialValue="Option 2"
             options={options}
             validate={required}
             required={true}
@@ -34,11 +35,11 @@ export function SelectForm(props) {
 }
 
 export default function Select(props) {
-  const { name, label, options, validate, required, setShowOptions } = props;
+  const { name, label, options, validate, required, initialValue } = props;
 
   return (
     <div className="input-field">
-      <Field name={name} validate={validate} initialValue={"Option 2"}>
+      <Field name={name} validate={validate} initialValue={initialValue}>
         {({ input, meta }) => (
           <div className="text_input_field">
             <Label
