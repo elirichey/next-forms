@@ -10,6 +10,9 @@ import { CheckboxForm } from "../components/Inputs/Checkbox";
 import { CheckboxMultiSelectForm } from "../components/Inputs/CheckboxMultiSelect";
 import { RadiosForm } from "../components/Inputs/Radios";
 import { ComboboxForm } from "../components/Inputs/Combobox";
+import { DateForm } from "../components/Inputs/Date";
+import { TimeForm } from "../components/Inputs/Time";
+import { SwitchForm } from "../components/Inputs/Switch";
 
 export default function Home() {
   return (
@@ -45,6 +48,16 @@ export default function Home() {
         </div>
 
         <div className="form-wrapper">
+          <span className="form-title">Date</span>
+          <DateForm />
+        </div>
+
+        <div className="form-wrapper">
+          <span className="form-title">Time</span>
+          <TimeForm />
+        </div>
+
+        <div className="form-wrapper">
           <span className="form-title">Select</span>
           <SelectForm />
         </div>
@@ -62,6 +75,11 @@ export default function Home() {
         <div className="form-wrapper">
           <span className="form-title">Checkbox</span>
           <CheckboxForm />
+        </div>
+
+        <div className="form-wrapper">
+          <span className="form-title">Switch</span>
+          <SwitchForm />
         </div>
 
         <div className="form-wrapper">
