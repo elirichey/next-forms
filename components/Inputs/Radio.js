@@ -1,6 +1,10 @@
 import { Form, Field } from "react-final-form";
 
-const options = ["Value 1", "Value 2", "Value 3"];
+const options = [
+  { initialValue: false, name: "Value 1" },
+  { initialValue: false, name: "Value 2" },
+  { initialValue: true, name: "Value 3" },
+];
 
 export default function Radio(props) {
   const onSubmit = async (values) => {
@@ -30,8 +34,15 @@ function RenderRadios(props) {
   const { name, options } = props;
 
   return options.map((item, i) => {
+    const { initialValue } = item;
     return (
-      <Field name={name} type="radio" value={item} key={i}>
+      <Field
+        name={name}
+        initialValue={initialValue}
+        type="radio"
+        value={item}
+        key={i}
+      >
         {({ input, meta }) => {
           return (
             <div className="radio-field">
@@ -42,11 +53,11 @@ function RenderRadios(props) {
                     : "field-label"
                 }
               >
-                {item}
+                {item.name}
                 <input
                   name={input.name}
                   type="radio"
-                  value={item}
+                  value={item.name}
                   checked={input.checked}
                   onChange={input.onChange}
                   className="radio"

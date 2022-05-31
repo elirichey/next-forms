@@ -14,6 +14,7 @@ export default function Input(props) {
           <RenderInput
             name="text"
             label="Text Input *"
+            initialValue="initialValue"
             placeholder="Placeholder"
             validate={required}
             required={true}
@@ -35,10 +36,10 @@ export default function Input(props) {
 }
 
 function RenderInput(props) {
-  const { name, label, validate, required, placeholder } = props;
+  const { name, label, validate, required, placeholder, initialValue } = props;
 
   return (
-    <Field name={name} validate={validate}>
+    <Field name={name} initialValue={initialValue} validate={validate}>
       {({ input, meta }) => (
         <div className="input-field">
           <Label

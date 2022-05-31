@@ -48,6 +48,7 @@ export default function Password(props) {
           <RenderPassword
             name="password"
             label="Password *"
+            initialValue="initialValue"
             placeholder="Password"
             hidePassword={hidePassword}
             setHidePassword={setHidePassword}
@@ -81,11 +82,13 @@ function RenderPassword(props) {
     hidePassword,
     setHidePassword,
     strength,
+    initialValue,
   } = props;
 
   return (
     <Field
       name={name}
+      initialValue={initialValue}
       // validate={required} // No Checking Strength
       // validate={composeValidators(required, mustBePassword)} // Tests Password Strength
       validate={validate}
@@ -106,19 +109,19 @@ function RenderPassword(props) {
           />
 
           {hidePassword ? (
-            <button
+            <span
               className="password-visable"
               onClick={() => setHidePassword(false)}
             >
               Show
-            </button>
+            </span>
           ) : (
-            <button
+            <span
               className="password-visable"
               onClick={() => setHidePassword(true)}
             >
               Hide
-            </button>
+            </span>
           )}
 
           {input.value.length > 6 ? (

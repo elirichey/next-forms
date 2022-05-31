@@ -12,12 +12,12 @@ export default function Email(props) {
   return (
     <Form
       onSubmit={onSubmit}
-      initialValues={{ email: "" }}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
           <RenderEmailField
             name="email"
             label="Email *"
+            initialValue="initialValue@email.com"
             validate={composeValidators(required, mustBeEmail)}
             placeholder="email@example.com"
             required={true}
@@ -39,10 +39,10 @@ export default function Email(props) {
 }
 
 function RenderEmailField(props) {
-  const { name, label, validate, placeholder, required } = props;
+  const { name, label, validate, placeholder, required, initialValue } = props;
 
   return (
-    <Field name={name} validate={validate}>
+    <Field name={name} initialValue={initialValue} validate={validate}>
       {({ input, meta }) => (
         <div className="input-field">
           <Label

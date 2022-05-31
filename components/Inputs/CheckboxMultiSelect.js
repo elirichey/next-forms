@@ -1,8 +1,8 @@
 import { Form, Field } from "react-final-form";
 
-const options = ["Value 1", "Value 2"];
+const options = ["Value 1", "Value 2", "Value 3"];
 
-export default function CheckboxMultiSelect(props) {
+export function CheckboxMultiSelect(props) {
   const onSubmit = async (values) => {
     console.log("Submit Checkbox Muliselect:::", values.isChecked);
   };
@@ -17,6 +17,7 @@ export default function CheckboxMultiSelect(props) {
             name="isChecked"
             options={options}
             multiple={true}
+            initialValues={[options[0], options[2]]}
           />
 
           <div className="submit-container">
@@ -30,8 +31,8 @@ export default function CheckboxMultiSelect(props) {
   );
 }
 
-function RenderMultiselect(props) {
-  const { name, options, multiple } = props;
+export default function RenderMultiselect(props) {
+  const { name, options, multiple, initialValues } = props;
 
   return options.map((item, i) => {
     return (
@@ -50,7 +51,12 @@ function RenderMultiselect(props) {
               }
             >
               {item}
-              <input {...input} type="checkbox" className="checkbox" />
+              <input
+                {...input}
+                type="checkbox"
+                className="checkbox"
+                checked={initialValues.some((x) => x === item)}
+              />
             </label>
           </div>
         )}

@@ -21,6 +21,7 @@ export default function Phone(props) {
           <RenderPhoneInput
             name="phone"
             label="Phone Number *"
+            initialValue="(xxx) xxx-xxxx"
             placeholder="Phone Number"
             validate={composeValidators(required, mustBePhone)}
             required={true}
@@ -42,10 +43,10 @@ export default function Phone(props) {
 }
 
 function RenderPhoneInput(props) {
-  const { name, label, validate, required, placeholder } = props;
+  const { name, label, validate, required, placeholder, initialValue } = props;
 
   return (
-    <Field name={name} initialValues={{ phone: "" }} validate={validate}>
+    <Field name={name} initialValue={initialValue} validate={validate}>
       {({ input, meta }) => (
         <div className="input-field">
           <Label

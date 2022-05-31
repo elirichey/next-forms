@@ -7,7 +7,7 @@ import Textarea from "../components/Inputs/Textarea";
 import Select from "../components/Inputs/Select";
 import SelectCustom from "../components/Inputs/SelectCustom";
 import Checkbox from "../components/Inputs/Checkbox";
-import CheckboxMultiSelect from "../components/Inputs/CheckboxMultiSelect";
+import { CheckboxMultiSelect } from "../components/Inputs/CheckboxMultiSelect";
 import Radio from "../components/Inputs/Radio";
 import Combobox from "../components/Inputs/Combobox";
 
