@@ -14,8 +14,7 @@ export function DateForm(props) {
           <Date
             name="text"
             label="Date *"
-            initialValue="initialValue"
-            placeholder="Placeholder"
+            initialValue="1990-12-13"
             validate={required}
             required={true}
           />

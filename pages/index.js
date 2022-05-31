@@ -13,6 +13,7 @@ import { ComboboxForm } from "../components/Inputs/Combobox";
 import { DateForm } from "../components/Inputs/Date";
 import { TimeForm } from "../components/Inputs/Time";
 import { SwitchForm } from "../components/Inputs/Switch";
+import { DatetimeForm } from "../components/Inputs/Datetime";
 
 export default function Home() {
   return (
@@ -55,6 +56,11 @@ export default function Home() {
         <div className="form-wrapper">
           <span className="form-title">Time</span>
           <TimeForm />
+        </div>
+
+        <div className="form-wrapper">
+          <span className="form-title">Datetime</span>
+          <DatetimeForm />
         </div>
 
         <div className="form-wrapper">

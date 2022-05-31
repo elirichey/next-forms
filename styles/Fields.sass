@@ -26,14 +26,23 @@ input, textarea, select
   &.relative-index
     z-index: 2
   &.date
-    max-width: 110px
+    width: 110px
     input
       padding-right: 0
   &.time
-    max-width: 95px
+    width: 95px
     input
       padding-right: 0
 
+// Datetime
+.datetime-container
+  display: flex
+  .date
+    margin-right: 15px
+  .time
+    margin-left: 15px
+
+// Input
 .text-input
   display: block
   width: 100%

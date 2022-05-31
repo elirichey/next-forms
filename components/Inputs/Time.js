@@ -14,8 +14,7 @@ export function TimeForm(props) {
           <Time
             name="text"
             label="Time *"
-            initialValue="initialValue"
-            placeholder="Placeholder"
+            initialValue="16:20"
             validate={required}
             required={true}
           />
