@@ -41,6 +41,7 @@ export function ComboboxForm(props) {
             showOptions={showOptions}
             setShowOptions={setShowOptions}
             onSearch={onSearch}
+            multiple={true}
           />
 
           <div className="combobox-submit">
@@ -70,6 +71,7 @@ export default function Combobox(props) {
     searchPlaceholder,
     showOptions,
     setShowOptions,
+    multiple,
   } = props;
 
   // Sort Alphabetically
@@ -106,7 +108,7 @@ export default function Combobox(props) {
                           className={
                             values &&
                             values.comboboxSelected &&
-                            values.comboboxSelected.includes(item)
+                            values.comboboxSelected.includes(item.id)
                               ? "option active"
                               : "option"
                           }
@@ -114,14 +116,14 @@ export default function Combobox(props) {
                         >
                           <Field
                             name={optionName}
-                            value={item}
+                            value={item.id}
                             type="checkbox"
-                            multiple={true}
+                            multiple={multiple}
                           >
                             {({ input, meta }) => (
                               <div className="checkbox-field combobox">
                                 <label className="field-label">
-                                  {item}
+                                  {item.id}
                                   <input
                                     {...input}
                                     type="checkbox"
