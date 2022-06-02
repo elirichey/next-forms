@@ -117,7 +117,7 @@ export default function Combobox(props) {
                           <Field
                             name={optionName}
                             value={item.id}
-                            type="checkbox"
+                            type={multiple ? "checkbox" : "radio"}
                             multiple={multiple}
                           >
                             {({ input, meta }) => (
@@ -126,7 +126,7 @@ export default function Combobox(props) {
                                   {item.id}
                                   <input
                                     {...input}
-                                    type="checkbox"
+                                    type={multiple ? "checkbox" : "radio"}
                                     className="checkbox"
                                   />
                                 </label>
