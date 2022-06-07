@@ -18,6 +18,7 @@ export function InputForm(props) {
             placeholder="Placeholder"
             validate={required}
             required={true}
+            disabled={false}
           />
 
           <div className="submit-container">
@@ -36,7 +37,15 @@ export function InputForm(props) {
 }
 
 export default function Input(props) {
-  const { name, label, validate, required, placeholder, initialValue } = props;
+  const {
+    name,
+    label,
+    validate,
+    required,
+    placeholder,
+    initialValue,
+    disabled,
+  } = props;
 
   return (
     <Field name={name} initialValue={initialValue} validate={validate}>
@@ -53,6 +62,7 @@ export default function Input(props) {
             placeholder={placeholder}
             className="text-input"
             required={required}
+            disabled={disabled}
           />
         </div>
       )}
